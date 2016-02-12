@@ -98,12 +98,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void prevQuestion() {
-        if (mCurrentIndex == 0) {
-            mCurrentIndex = 4;
-        }
-        else {
-            mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
-        }
+        mCurrentIndex = (mCurrentIndex + mQuestionBank.length - 1) % mQuestionBank.length;
         updateQuestion();
     }
 }
