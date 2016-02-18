@@ -56,9 +56,9 @@ public class CheatActivity extends AppCompatActivity {
             }
         });
 
-        /*if (savedInstanceState != null) {
+        if (savedInstanceState != null) {
             setAnswerShownResult(savedInstanceState.getBoolean(KEY_CHEAT));
-        }*/
+        }
     }
 
     private void setAnswerShownResult(boolean isAnswerShown) {
@@ -67,11 +67,12 @@ public class CheatActivity extends AppCompatActivity {
         setResult(RESULT_OK, data);
     }
 
-    /*@Override
+    @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
+        Log.i(TAG, "onSaveInstanceState");
         savedInstanceState.putBoolean(KEY_CHEAT, mAnswerIsTrue);
-    }*/
+    }
 
 
 }
