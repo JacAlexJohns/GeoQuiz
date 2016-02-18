@@ -34,6 +34,10 @@ public class QuizActivity extends AppCompatActivity {
             new Question(R.string.question_asia, true),
     };
 
+    private boolean[] mCheaterBank = new boolean[] {
+            false, false, false, false, false
+    };
+
     private int mCurrentIndex = 0;
     private boolean mIsCheater;
 
@@ -176,13 +180,16 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void nextQuestion() {
+        if (mIsCheater) mCheaterBank[mCurrentIndex] = true;
         mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
-        mIsCheater = false;
+        mIsCheater = mCheaterBank[mCurrentIndex];
         updateQuestion();
     }
 
     private void prevQuestion() {
+        if (mIsCheater) mCheaterBank[mCurrentIndex] = true;
         mCurrentIndex = (mCurrentIndex + mQuestionBank.length - 1) % mQuestionBank.length;
+        mIsCheater = mCheaterBank[mCurrentIndex];
         updateQuestion();
     }
 }
