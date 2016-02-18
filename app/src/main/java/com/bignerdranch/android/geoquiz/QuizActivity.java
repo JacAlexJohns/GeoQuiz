@@ -17,6 +17,7 @@ public class QuizActivity extends AppCompatActivity {
     private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
     private static final String KEY_CHEAT = "cheat";
+    private static final String KEY_CBANK = "cbank";
     private static final int REQUEST_CODE_CHEAT = 0;
 
     private Button mTrueButton;
@@ -34,9 +35,7 @@ public class QuizActivity extends AppCompatActivity {
             new Question(R.string.question_asia, true),
     };
 
-    private boolean[] mCheaterBank = new boolean[] {
-            false, false, false, false, false
-    };
+    private boolean[] mCheaterBank = new boolean[mQuestionBank.length];
 
     private int mCurrentIndex = 0;
     private boolean mIsCheater;
@@ -123,6 +122,7 @@ public class QuizActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
             mIsCheater = savedInstanceState.getBoolean(KEY_CHEAT, false);
+            mCheaterBank = savedInstanceState.getBooleanArray(KEY_CBANK);
         }
 
         updateQuestion();
@@ -147,6 +147,7 @@ public class QuizActivity extends AppCompatActivity {
         Log.i(TAG, "onSaveInstanceState");
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
         savedInstanceState.putBoolean(KEY_CHEAT, mIsCheater);
+        savedInstanceState.putBooleanArray(KEY_CBANK, mCheaterBank);
     }
 
     @Override
