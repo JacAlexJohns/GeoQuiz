@@ -21,6 +21,7 @@ public class CheatActivity extends AppCompatActivity {
             "com.bignerdranch.android.geoquiz.answer_shown";
 
     private boolean mAnswerIsTrue;
+    private boolean mCheated = false;
     private TextView mAnswerTextView;
     private Button mShowAnswer;
 
@@ -52,7 +53,8 @@ public class CheatActivity extends AppCompatActivity {
                 } else {
                     mAnswerTextView.setText(R.string.false_button);
                 }
-                setAnswerShownResult(true);
+                mCheated = true;
+                setAnswerShownResult(mCheated);
             }
         });
 
@@ -71,7 +73,7 @@ public class CheatActivity extends AppCompatActivity {
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         Log.i(TAG, "onSaveInstanceState");
-        savedInstanceState.putBoolean(KEY_CHEAT, mAnswerIsTrue);
+        savedInstanceState.putBoolean(KEY_CHEAT, mCheated);
     }
 
 
