@@ -82,7 +82,7 @@ public class CheatActivity extends AppCompatActivity {
         });
 
         if (savedInstanceState != null) {
-            mCheated = true;
+            mCheated = savedInstanceState.getBoolean(KEY_CHEAT);
             setAnswerShownResult(savedInstanceState.getBoolean(KEY_CHEAT));
         }
     }
