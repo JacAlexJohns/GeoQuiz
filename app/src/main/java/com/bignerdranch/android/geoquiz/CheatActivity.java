@@ -85,6 +85,20 @@ public class CheatActivity extends AppCompatActivity {
             mCheated = savedInstanceState.getBoolean(KEY_CHEAT);
             setAnswerShownResult(savedInstanceState.getBoolean(KEY_CHEAT));
         }
+
+        textSet(mCheated);
+    }
+
+    private void textSet(boolean cheater) {
+        if (cheater) {
+            if (mAnswerIsTrue) {
+                mAnswerTextView.setText(R.string.true_button);
+            } else {
+                mAnswerTextView.setText(R.string.false_button);
+            }
+            mAnswerTextView.setVisibility(View.VISIBLE);
+            mShowAnswer.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void setAnswerShownResult(boolean isAnswerShown) {
